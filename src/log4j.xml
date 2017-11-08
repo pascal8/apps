@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" threshold="null" debug="null">
+
+  <!-- ================================= -->
+  <!-- Preserve messages in a local file -->
+  <!-- ================================= -->
+
+  <!-- A time/date based rolling appender -->
+  <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="logs/proxyapp.log"/>
+    <!-- <param name="Encoding" value=""/> -->
+    <param name="BufferedIO" value="false"/>
+    <param name="BufferSize" value="1024"/>
+    <param name="Append" value="true"/>
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+    <param name="Threshold" value="DEBUG"/>
+
+    <layout class="org.apache.log4j.PatternLayout">
+      <!-- The default pattern: Date Priority [logger] Message\n -->
+      <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- ============================== -->
+  <!-- Append messages to the console -->
+  <!-- ============================== -->
+
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="debug"/>
+    <param name="Target" value="System.out"/>
+
+    <layout class="org.apache.log4j.PatternLayout">
+      <!-- The default pattern: Date Priority [logger] Message\n -->
+      <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+    </layout>
+  </appender>
+
+  <!--logger name="java.sql" additivity="true">
+    <level value="debug"/>
+    <appender-ref ref="FILE" />
+  </logger-->
+  
+  <!--
+  <logger name="com.csii.pe.service.automaton" additivity="true">
+    <level value="info"/>
+    <appender-ref ref="FILE" />
+  </logger>
+	<logger name="org" additivity="true">
+    <level value="info"/>
+    <appender-ref ref="FILE" />
+  </logger>
+
+  -->
+  <!--logger name="com.ksrcb" additivity="true">
+    <level value="debug"/>
+    <appender-ref ref="FILE" />
+  </logger-->
+  <!-- logger name="com.ksrcb.ebank.daemon" additivity="true">
+    <level value="DEBUG"/>
+    <appender-ref ref="FILE" />
+  </logger-->
+
+  <root>
+    <level value="DEBUG" />
+    <appender-ref ref="FILE" />
+     <!--appender-ref ref="CONSOLE" /-->
+  </root>
+
+</log4j:configuration>
