@@ -1,0 +1,1 @@
+java -cp lib/log4j-1.2.17.jar:bin com.ksrcb.proxyapp.ProxyAppMain&
